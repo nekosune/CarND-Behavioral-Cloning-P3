@@ -1,10 +1,4 @@
-#**Behavioral Cloning** 
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
-—-
 
 **Behavioral Cloning Project**
 
@@ -78,8 +72,6 @@ I had at first a large amount of validation error , so I played around with the 
 it took quite a few attempts to get a model that didnt go off the road and onto the dirt, when it splits from road to dirt track. This turned out due to me not randomising before I split, but after, so the validation set , ie the last 20% of the track, was never taught.
 
 ####2. Final Model Architecture
-
-Katrina S, [19.03.17 20:35]
 The final model architecture (model.py lines 86-95) consisted of a convolution neural network with the following layers and layer sizes 
 Convolution - 24 - 5x5 subsample - 2x2
 Convolution - 36 - 5x5 subsample - 2x2
