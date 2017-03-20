@@ -1,4 +1,10 @@
+#**Behavioral Cloning** 
 
+##Writeup Template
+
+###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+
+---
 
 **Behavioral Cloning Project**
 
@@ -14,7 +20,7 @@ The goals / steps of this project are the following:
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
-—-
+---
 ###Files Submitted & Code Quality
 
 ####1. Submission includes all required files and can be used to run the simulator in autonomous mode
@@ -27,8 +33,9 @@ My project includes the following files:
 
 ####2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
-sh
+```sh
 python drive.py model.h5
+```
 
 ####3. Submission code is usable and readable
 
@@ -38,13 +45,14 @@ The model.py file contains the code for training and saving the convolution neur
 
 ####1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 5x5 and 3x3 filter sizes and depths between 24 and 64, Basically the NVIDIA model, with an added noise layer (model.py lines 86-95) 
+My model consists of a convolution neural network with 5x5 and 3x3 filter sizes and depths between 24 and 64, Basically the NVIDIA model, with an added noise layer (model.py lines 86-99) 
 
 The model  is normalized in the model using a Keras lambda layer (code line 77). 
 
 ####2. Attempts to reduce overfitting in the model
 
 The model has a noise layer to help prevent over-fitting. (model.py lines 83). 
+I also used dropout layers between the first 5 (Convolutional) Layers.
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 49-51). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
@@ -72,11 +80,16 @@ I had at first a large amount of validation error , so I played around with the 
 it took quite a few attempts to get a model that didnt go off the road and onto the dirt, when it splits from road to dirt track. This turned out due to me not randomising before I split, but after, so the validation set , ie the last 20% of the track, was never taught.
 
 ####2. Final Model Architecture
+
 The final model architecture (model.py lines 86-95) consisted of a convolution neural network with the following layers and layer sizes 
 Convolution - 24 - 5x5 subsample - 2x2
+Dropout - 0.1
 Convolution - 36 - 5x5 subsample - 2x2
+Dropout - 0.2
 Convolution - 48 - 5x5 subsample - 2x2
+Dropout - 0.2
 Convolution -  64- 3x3 
+Dropout - 0.1
 Convolution -  64- 3x3 
 Flatten
 Dense - 100

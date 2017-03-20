@@ -69,7 +69,7 @@ def generator(listToUse):
 
 
 
-
+dropout_val=0.1
 # Start of model
 model = Sequential()
 
@@ -84,9 +84,13 @@ model.add(GaussianNoise(0.1))
 
 # Main neural net
 model.add(Convolution2D(24, 5, 5, subsample=(2, 2), activation="relu"))
+model.add(Dropout(0.1))
 model.add(Convolution2D(36, 5, 5, subsample=(2, 2), activation="relu"))
+model.add(Dropout(0.2))
 model.add(Convolution2D(48, 5, 5, subsample=(2, 2), activation="relu"))
+model.add(Dropout(0.2))
 model.add(Convolution2D(64, 3, 3, activation="relu"))
+model.add(Dropout(0.1))
 model.add(Convolution2D(64, 3, 3, activation="relu"))
 model.add(Flatten())
 model.add(Dense(100))
@@ -107,4 +111,4 @@ plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.savefig('history.png')
-model.save("modelnewData.h5")
+model.save("modeldropData.h5")
